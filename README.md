@@ -27,7 +27,7 @@ Since that dataset does not exist on the web, I decided to create it on my own, 
 The obtained paintings dataset can be found on the repository, and is organized as followed:
 
 <p align="center">
-<img src="https://github.com/cnielly/prototypical-networks-paintings-classifier/blob/master/README_images/tree_files.JPG" width="500" alt="Clusters in the embedding space">
+<img src="https://github.com/cnielly/prototypical-networks-paintings-classifier/blob/master/README_images/tree_files.JPG" width="800" alt="Clusters in the embedding space">
 </p>
 
 After a few hours of work, I was able to gather 30 classes, each containing 6 examples. So a total number of 180 pictures. I split this dataset into a training set of 20 classes and a testing set of 10 classes. 
@@ -45,7 +45,7 @@ Each sample is composed of 1 support image and 5 query images. With this configu
 The sample then goes through four embedding blocks, and each image is transformed from (56x56) to a (64x3x3) tensor, as shown on the image bellow. 
 
 <p align="center">
-<img src="https://github.com/cnielly/prototypical-networks-paintings-classifier/blob/master/README_images/embedding_module.JPG" width="500" alt="Clusters in the embedding space">
+<img src="https://github.com/cnielly/prototypical-networks-paintings-classifier/blob/master/README_images/embedding_module.JPG" width="800" alt="Clusters in the embedding space">
 </p>
 
 Then prototypes are computed for each class thanks to the support set. Here, no average is needed since there is only one image per class (One-shot). The prototype is actually the support image itself. Distances are computed between queries and prototypes (Euclidean), and finally a class is assigned to each of the 5 query images. 
@@ -58,7 +58,7 @@ Loss is computed the loss with cross-entropy. And the backpropagate allows the w
 Once the network is trained, it is time to test. Imagine a museum comes to us with a set of paintings. We do not want to retrain our network from scratch, but we want to test if our network is able to recognize these new classes. 
 I tested the network on 1,000 episodes. At each episode a batch of 5 classes is used, as if the museum would have come to us with 5 different paintings (with 6 pictures of each). So our training parameters are: 
 
-*Nc = 5, Ns = 1, Ns = 5 * 
+*Nc = 5, Ns = 1, Ns = 5* 
 
 ## Results: 
 
